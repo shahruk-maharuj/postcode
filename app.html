@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>App Page</title>
+    <script async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGS4B1QmCIkXFnHkcZx0szlHXjyJhHKJo&libraries=places&callback=initAutocomplete">
+    </script>
+  </head>
+  <body>
+    <form>
+      <label for="postcode">Your Postcode:</label>
+      <input type="text" id="postcode" name="postcode" />
+    </form>
+    <script>
+      function initAutocomplete() {
+        var input = document.getElementById('postcode');
+        var autocomplete = new google.maps.places.Autocomplete(input, {
+          types: ['geocode']
+        });
+      }
+
+      window.onload = function () {
+        var postcode = localStorage.getItem("postcode");
+        document.getElementById("postcode").value = postcode;
+      };
+    </script>
+  </body>
+</html>
